@@ -1,12 +1,10 @@
 package lesson6.list;
 
-import java.sql.Array;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 
-public class CustomArrayList implements MyArrayList, Iterable<Integer> {
+public class CustomArrayList implements MyArray, Iterable<Integer> {
 
     public Iterator<Integer> smallToBigIterator()
     {

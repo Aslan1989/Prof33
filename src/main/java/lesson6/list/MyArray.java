@@ -1,7 +1,7 @@
 package lesson6.list;
 // интерфейс это набок методов, которые должы реализовывать наследники
 // контракт - которому должны следовать дочерние классы
-public interface MyArrayList {
+public interface MyArray {
     int size();
     boolean contains(int value); // есть ли такой элемент в списке или нет
     void set(int index, int value); // изменение значения по индексу
