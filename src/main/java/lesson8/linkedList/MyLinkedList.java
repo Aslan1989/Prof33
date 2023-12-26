@@ -5,13 +5,12 @@ import lesson6.list.MyArray;
 public class MyLinkedList implements MyArray {
 
     private Node head;
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder result = new StringBuilder("[");
         Node n = head;
-        while (n != null)
-        {
+        while (n != null) {
             result.append(n.getValue());
             n = n.getNext();
             if (n != null)
@@ -20,12 +19,36 @@ public class MyLinkedList implements MyArray {
         result.append("]");
         return result.toString();
     }
-    private static class Node
+
+
+    // добавление элемента в начало
+    public void addFirst(int value) {
+        // создание нового элемента ссылающегося на текущий head
+        Node newNode = new Node(value, head);
+        // сделать так чтобы head ссылался на нов элемент
+        head = newNode;
+    }
+
+    public int getFirst() {
+        if (head == null)
+            throw new IndexOutOfBoundsException();
+        return head.getValue();
+
+    }
+
+    public int removeFirst()
     {
+        if (head == null)
+            throw new IndexOutOfBoundsException();
+        head = head.getNext();
+        return head.getValue();
+    }
+
+    private static class Node {
         private int value;
         private Node next;
-        public Node (int value)
-        {
+
+        public Node(int value) {
             this.value = value;
         }
 
@@ -52,6 +75,7 @@ public class MyLinkedList implements MyArray {
     }
 
     private int size = 0; // кол во элементов
+
     @Override
     public int size() {
         return size;
@@ -59,6 +83,12 @@ public class MyLinkedList implements MyArray {
 
     @Override
     public boolean contains(int value) {
+        Node n = head; // текущий узел, голова нашего листа
+        while (n != null) {
+            if (n.getValue() == value)
+                return true;
+            n = n.getNext();
+        }
         return false;
     }
 
@@ -69,7 +99,7 @@ public class MyLinkedList implements MyArray {
 
     @Override
     public void add(int value) {
-        if (head == null){
+        if (head == null) {
             head = new Node(value);
             return;
         }
@@ -77,7 +107,7 @@ public class MyLinkedList implements MyArray {
         // создать новый Node(value) со значением value
         // у последнего элемента сделать setNext(Node)
         Node n = head;
-        while (n.getNext() !=null)
+        while (n.getNext() != null)
             n = n.getNext();
         n.setNext(new Node(value));
     }
