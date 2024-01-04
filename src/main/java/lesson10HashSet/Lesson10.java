@@ -1,9 +1,6 @@
 package lesson10HashSet;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class Lesson10 {
     public static void main(String[] args) {
@@ -61,5 +58,23 @@ public class Lesson10 {
                 playerIterator.remove();
         }
         System.out.println(players);
+
+        System.out.println();
+        Set<String> capitals = new HashSet<>(
+                List.of("Dublin", "Oslo", "Stockholm", "Tallinn", "Riga")
+        );
+        TreeSet<String> c = new TreeSet<>(capitals);
+        System.out.println(c);
+
+        System.out.println(c.tailSet("Munich")); // все что больше этого значеия в листе
+
+        TreeSet<Player> players1 = new TreeSet<>(
+                new Comparator<Player>() {
+                    @Override
+                    public int compare(Player o1, Player o2) {
+                        return Integer.compare(o1.getId(), o2.getId());
+                    }
+                }
+        );
     }
 }
