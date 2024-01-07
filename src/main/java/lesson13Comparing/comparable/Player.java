@@ -25,7 +25,16 @@ public class Player  implements Comparable<Player>{
 
     @Override // переопределяем из интерфейса из которого она наследовалась
     public int compareTo(Player o) {
-        return 0;
+        //return this.getRating() - o.getRating();
+        return Integer.compare(getRating(), o.getRating());
     }
 
+    @Override
+    public String toString() {
+        return "Player {" +
+                "rating=" + rating +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
