@@ -87,6 +87,11 @@ public class Lesson13 {
 
         System.out.println("Sort of Rating Name and reverse Age: " +
                 team);
+        System.out.println();
+        team.sort(
+                Comparator.comparing(Player::getRating).reversed()
+        );
+        System.out.println("Sort of Rating: " + team);
     }
 
 

@@ -7,12 +7,11 @@ public class Employee  implements Comparable<Employee>{
     private String name;
     private int age;
     private double salary;
-    public static Comparator<Employee> nameComparator = new Comparator<Employee>() {
-        @Override
-        public int compare(Employee o1, Employee o2) {
-            return o1.getName().compareTo(o2.getName());
-        }
-    };
+    public static Comparator<Employee> nameComparator = Comparator.comparing(Employee::getName);
+
+    public static Comparator<Employee> salaryComparator = Comparator.comparingDouble(Employee::getSalary);
+
+    public static Comparator<Employee> ageComparator = Comparator.comparingInt(Employee::getAge);
 
     public Employee(int id, String name, int age, double salary) {
         this.id = id;
